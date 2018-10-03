@@ -16,13 +16,60 @@
 
 <body>
 
+    <div class="top-bar">
+        <div class="top-bar-center">
+            <ul class="menu">
+                <li class="menu-text">Eco Status</li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="grid-container">
+
+        <div class="grid-y grid-padding-y">
+            <div class="grid-x">
+                <div class="cell small-6">
+                    <div id="city-state" class="validate">
+                        <form>
+                            <input class="typeahead" id="input-location" type="text" title="City Name, 2-Digit State or Country"
+                                pattern="^[A-Za-z ]+(?:,?\s+)[A-Za-z]{2,}$" placeholder="City Name, State Abbreviation">
+                            <button id="location-submit" type="submit" class="success button">Go</button>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="cell small-6">
+                    <ul class="menu button-group round">
+                        <li><button type="button" class="button success" id="sign-up-btn">Sign Up</button></li>
+                        <li><button type="button" class="button success" id="sign-in-btn">Sign In</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="grid-y" id="map-area">
+            <div class="cell" id="map"></div>
+        </div>
+
+
+
+
+    </div>
+
 
     <!-- jQuery must be imported before Foundation -->
-    <script src="js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
     <!-- Compressed JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.3/dist/js/foundation.min.js" integrity="sha256-l1HhyJ0nfWQPdwsVJLNq8HfZNb3i1R9M82YrqVPzoJ4= sha384-NH8utV74bU+noXiJDlEMZuBe34Bw/X66sw22frHkgIs8R1QKWc8ckxYB4DheLjH4 sha512-JMs3Y+JjY+DhwVOPeJhkLM/0FeK9ANxvuYiHGpGp7Q2kMlmNEN/2v6TkrXdirxqB3DHxPlQ8iMxvb/eSPCF5CA=="
         crossorigin="anonymous"></script>
-    <!-- Javascript -->
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1cMSk9b4rKrqw74cT7mgOoV0OyY_VEHc&callback=initMap"
+        async defer></script>
+    <!-- Javascript for city and states -->
+    <script src="./assets/js/cityState.js"></script>
+    <!-- Javascritp for typeahead from Jquery -->
+    <script src="./assets/js/typeahead.js"></script>
+    <!-- Javascript Logic -->
     <script src="./assets/js/logic.js"></script>
 </body>
 
