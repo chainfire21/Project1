@@ -211,8 +211,12 @@ $("form").submit(function (e) {
         dataType: "json",
     }).then(function (response) {
         console.log(response);
-
+        if(response.status==="OK"){
         updatePosition(response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
+        }
+        else{
+            console.log("no results found");
+        }
     });
 });
 
