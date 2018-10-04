@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 #sign-up-btn{
     margin-right: 5px;   
 }
@@ -20,10 +18,22 @@
     margin: 0px;
 }
 
+h1{
+    font-family: 'Rancho','Josefin Slab',sans-serif;
+    color: whitesmoke;
+}
+
+body{
+    background-image: url(../media/cloudySky.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
 .tt-menu {
     background-color: rgb(237, 247, 246, .7);
     padding: 5px;
     font-size:18px;
     letter-spacing: 1px;
 }
->>>>>>> Stashed changes
