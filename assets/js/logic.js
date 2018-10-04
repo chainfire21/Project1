@@ -21,5 +21,5 @@ $("#add_location").on("click", function () {
             console.log(pollution);
         })
     };
-    air();
 });
+
