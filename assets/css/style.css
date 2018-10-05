@@ -10,8 +10,16 @@
     height:100%;
 }
 
+#favMap1, #favMap2, #favMap3, #favMap4{
+    height:150px;
+}
+
 [type=text]{
     margin: 0px;
+}
+
+#searches{
+    margin-bottom:0px;
 }
 
 .button{
@@ -22,6 +30,10 @@
 h1{
     font-family: 'Rancho','Josefin Slab',sans-serif;
     color: whitesmoke;
+}
+h2{
+    font-family: 'Changa',sans-serif;
+    color: seagreen;
 }
 
 body{

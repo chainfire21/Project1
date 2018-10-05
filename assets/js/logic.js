@@ -1,25 +1,11 @@
 $(document).foundation();
 var map;
-// ---------------------------------------------------TYPEAHEAD--------------------------------------------------//
-var substringMatcher = function (strs) {
-    return function findMatches(q, cb) {
-        var matches, substringRegex;
-        // to get the matches
-        matches = [];
+var favMap1;
+var favMap2;
+var favMap3;
+var favMap4;
 
-        // regex used to determine if a string contains the substring
-        substrRegex = new RegExp(q, 'i');
-
-        // iterate through the pool of strings for q and add it
-        $.each(strs, function (i, str) {
-            if (substrRegex.test(str)) {
-                matches.push(str);
-            }
-        });
-        cb(matches);
-    };
-};
-
+// ------------------------------------------------TYPEAHEAD START--------------------------------------------------//
 var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
     'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
     'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
@@ -30,7 +16,6 @@ var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
     'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
     'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
 ];
-
 var cityStCodes = [];
 for (var i = 0; i < cityStates.length; i++) {
     var tempStr;
@@ -188,6 +173,24 @@ for (var i = 0; i < cityStates.length; i++) {
     }
     cityStCodes.push(tempStr);
 }
+var substringMatcher = function (strs) {
+    return function findMatches(q, cb) {
+        var matches, substringRegex;
+        // to get the matches
+        matches = [];
+
+        // regex used to determine if a string contains the substring
+        substrRegex = new RegExp(q, 'i');
+
+        // iterate through the pool of strings for q and add it
+        $.each(strs, function (i, str) {
+            if (substrRegex.test(str)) {
+                matches.push(str);
+            }
+        });
+        cb(matches);
+    };
+};
 
 $('#city-state .typeahead').typeahead({
     hint: true,
@@ -198,7 +201,7 @@ $('#city-state .typeahead').typeahead({
         name: 'cityStCodes',
         source: substringMatcher(cityStCodes)
     });
-// ----------------------------------------------TYPEAHEAD-------------------------------------------------------//
+// ------------------------------------------------TYPEAHEAD END--------------------------------------------------//
 
 $("form").submit(function (e) {
     e.preventDefault();
@@ -211,24 +214,43 @@ $("form").submit(function (e) {
         dataType: "json",
     }).then(function (response) {
         console.log(response);
-        if(response.status==="OK"){
-        updatePosition(response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
+        if (response.status === "OK") {
+            updatePosition(map, response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
         }
-        else{
+        else {
             console.log("no results found");
         }
     });
 });
 
 //update the map location to new search location
-function updatePosition(lat, long) {
+function updatePosition(mapType, lat, long) {
     var location = new google.maps.LatLng(lat, long);
-    map.setCenter(location);
-    map.setZoom(8);
+    mapType.setCenter(location);
+    mapType.setZoom(8);
 }
-function initMap() {
+//create the main and favorite maps
+function initMaps() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 29.7604267, lng: -95.3698028 },
         zoom: 8
     });
+    favMap1 = new google.maps.Map(document.getElementById("favMap1"), {
+        center: { lat: 40.7127753, lng: -74.0059728 },
+        zoom: 8
+    });
+    favMap2 = new google.maps.Map(document.getElementById("favMap2"), {
+        center: { lat: 39.7392358, lng: -104.990251 },
+        zoom: 8
+    });
+    favMap3 = new google.maps.Map(document.getElementById("favMap3"), {
+        center: { lat: 34.0522342, lng: -118.2436849 },
+        zoom: 8
+    });
+    favMap3 = new google.maps.Map(document.getElementById("favMap4"), {
+        center: { lat: 41.8781136, lng: -87.6297982 },
+        zoom: 8
+    });
+
+
 }

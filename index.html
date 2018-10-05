@@ -37,24 +37,86 @@
                 <button type="button" class="button success" id="sign-in-btn">Sign In</button>
             </div>
         </div>
-        <div class="grid-y grid-margin-y">
+        <div class="grid-x grid-margin-y">
             <div class="cell" id="map-area">
                 <div class="cell" id="map"></div>
             </div>
         </div>
+        <div class="grid-x grid-margin-x grid-margin-y">
+            <div class="cell" id="searches">
+                <h2>Recent Searches</h2>
+            </div>
+            <div class="cell auto">
+                <div class="card">
+                    <div class="card-divider">
+                        This is a header
+                    </div>
+                    <div id="favMap1"></div>
+                    <div class="card-section">
+                        <p>It has an easy to override visual style, and is appropriately subdued.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cell auto">
+                <div class="card">
+                    <div class="card-divider">
+                        This is a header
+                    </div>
+                    <div id="favMap2"></div>
+                    <div class="card-section">
+                        <p>It has an easy to override visual style, and is appropriately subdued.</p>
+                    </div>
+                </div>
+            </div>
 
+            <div class="cell auto">
+                <div class="card">
+                    <div class="card-divider">
+                        This is a header
+                    </div>
+                    <div id="favMap3"></div>
+                    <div class="card-section">
+                        <p>It has an easy to override visual style, and is appropriately subdued.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cell auto">
+                <div class="card">
+                    <div class="card-divider">
+                        This is a header
+                    </div>
+                    <div id="favMap4"></div>
+                    <div class="card-section">
+                        <p>It has an easy to override visual style, and is appropriately subdued.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="grid-x">
+
+            <div class="cell">
+                <h2>Historical Data</h2>
+            </div>
+            <div class="cell" id="historical-data">
+
+            </div>
+
+        </div>
     </div>
 
 
     <!-- jQuery must be imported before Foundation -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-    <!-- Compressed JavaScript -->
+    <!-- Compressed Foundation JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.3/dist/js/foundation.min.js" integrity="sha256-l1HhyJ0nfWQPdwsVJLNq8HfZNb3i1R9M82YrqVPzoJ4= sha384-NH8utV74bU+noXiJDlEMZuBe34Bw/X66sw22frHkgIs8R1QKWc8ckxYB4DheLjH4 sha512-JMs3Y+JjY+DhwVOPeJhkLM/0FeK9ANxvuYiHGpGp7Q2kMlmNEN/2v6TkrXdirxqB3DHxPlQ8iMxvb/eSPCF5CA=="
         crossorigin="anonymous"></script>
     <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1cMSk9b4rKrqw74cT7mgOoV0OyY_VEHc&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1cMSk9b4rKrqw74cT7mgOoV0OyY_VEHc&callback=initMaps"
         async defer></script>
+    <!-- D3 Link -->
+    <script src="https://d3js.org/d3.v5.js"></script>
     <!-- Javascript for city and states -->
     <script src="./assets/js/cityState.js"></script>
     <!-- Javascritp for typeahead from Jquery -->
