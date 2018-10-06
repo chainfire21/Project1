@@ -1,0 +1,53 @@
+#sign-up-btn{
+    margin-right: 5px;   
+}
+
+#map-area{
+    height: 500px;
+}
+
+#map{
+    height:100%;
+}
+
+#favMap1, #favMap2, #favMap3, #favMap4{
+    height:150px;
+}
+
+[type=text]{
+    margin: 0px;
+}
+
+#searches{
+    margin-bottom:0px;
+}
+
+.button{
+    margin: 0px;
+    border-radius: 10px;
+}
+
+h1{
+    font-family: 'Rancho','Josefin Slab',sans-serif;
+    color: whitesmoke;
+}
+h2{
+    font-family: 'Changa',sans-serif;
+    color: seagreen;
+}
+
+body{
+    background-image: url(../media/cloudySky.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Changa',sans-serif;
+
+}
+
+.tt-menu {
+    background-color: rgb(237, 247, 246, .7);
+    padding: 5px;
+    font-size:18px;
+    letter-spacing: 1px;
+}
