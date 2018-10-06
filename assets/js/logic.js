@@ -206,6 +206,7 @@ $('#city-state .typeahead').typeahead({
 $("form").submit(function (e) {
     e.preventDefault();
     const locArr = $("#input-location").val().split(",");
+    console.log(locArr);
     const queryURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${locArr[0]},${locArr[1].trim()}tx&key=AIzaSyA5MpvY77M88RbRZ2JsaPYR5lEjsX_HyXg`;
     $.ajax({
         url: queryURL,
@@ -227,17 +228,17 @@ $("form").submit(function (e) {
 function updatePosition(mapType, lat, long) {
     var location = new google.maps.LatLng(lat, long);
     mapType.setCenter(location);
-    mapType.setZoom(8);
+    mapType.setZoom(10);
 }
 //create the main and favorite maps
 function initMaps() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 29.7604267, lng: -95.3698028 },
-        zoom: 8
+        zoom: 10
     });
     favMap1 = new google.maps.Map(document.getElementById("favMap1"), {
         center: { lat: 40.7127753, lng: -74.0059728 },
-        zoom: 8
+        zoom: 10
     });
     favMap2 = new google.maps.Map(document.getElementById("favMap2"), {
         center: { lat: 39.7392358, lng: -104.990251 },
@@ -256,23 +257,34 @@ function initMaps() {
 }
 
 // incorporating AirVisual's endpoints
-$("#add_location").on("click", function () {
+$("#location-submit").on("click", function (e) {
 
-    function air() {
-        var city = $("#city").val();
-        var state = $("#state").val();
+    function air(city, state) {
+        e.preventDefault();
+        // const locArr = $("#input-location").val().split(",");
+        // var city = locArr[0];
+        // var state = locArr[1].trim();
+        for (i = 0; i < statesAbbr.length; i++) {
+            if (state === statesAbbr[i][1]) {
+                state = statesAbbr[i][0];
 
-        var queryURL = "http://api.airvisual.com/v2/city?city=" + city + "&state=" + state + "&country=USA&key=a94duGPQHHCF4FGeQ";
-        console.log(queryURL);
+                var queryURL = "http://api.airvisual.com/v2/city?city=" + city + "&state=" + state + "&country=USA&key=a94duGPQHHCF4FGeQ";
+                console.log(queryURL);
 
-        // // Performing our AJAX GET request
-        $.ajax({
-            url: queryURL,
-            method: "GET",
-        }).then(function (response) {
-            console.log(response);
-            var pollution = response.data.current.pollution.aqius;
-            console.log(pollution);
-        })
+                // Performing our AJAX GET request
+                $.ajax({
+                    url: queryURL,
+                    method: "GET",
+                }).then(function (response) {
+                    console.log(response);
+                    var pollution = response.data.current.pollution.aqius;
+                    var coordinate = response.data.location.coordinates;
+                    console.log(pollution);
+                    console.log(coordinate);
+                })
+            };
+        };
     };
+    const locArr = $("#input-location").val().split(",");
+    air(locArr[0],locArr[1].trim());
 });
