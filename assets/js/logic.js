@@ -257,34 +257,54 @@ function initMaps() {
 }
 
 // incorporating AirVisual's endpoints
+// $("#location-submit").on("click", function (e) {
+
+//     function air(city, state) {
+//         e.preventDefault();
+//         for (i = 0; i < statesAbbr.length; i++) {
+//             if (state === statesAbbr[i][1]) {
+//                 state = statesAbbr[i][0];
+
+//                 var queryURL = "api.airvisual.com/v2/nearest_city?lat={{LATITUDE}}&lon={{LONGITUDE}}&key={{YOUR_API_KEY}}";
+//                 console.log(queryURL);
+
+//                 // Performing our AJAX GET request
+//                 $.ajax({
+//                     url: queryURL,
+//                     method: "GET",
+//                 }).then(function (response) {
+//                     console.log(response);
+//                     var pollution = response.data.current.pollution.aqius;
+//                     var coordinate = response.data.location.coordinates;
+//                     console.log(pollution);
+//                     console.log(coordinate);
+//                 })
+//             };
+//         };
+//     };
+//     const locArr = $("#input-location").val().split(",");
+//     air(locArr[0],locArr[1].trim());
+// });
 $("#location-submit").on("click", function (e) {
 
-    function air(city, state) {
+    function air(lat, long) {
         e.preventDefault();
-        // const locArr = $("#input-location").val().split(",");
-        // var city = locArr[0];
-        // var state = locArr[1].trim();
-        for (i = 0; i < statesAbbr.length; i++) {
-            if (state === statesAbbr[i][1]) {
-                state = statesAbbr[i][0];
 
-                var queryURL = "http://api.airvisual.com/v2/city?city=" + city + "&state=" + state + "&country=USA&key=a94duGPQHHCF4FGeQ";
-                console.log(queryURL);
+        var queryURL = "api.airvisual.com/v2/nearest_city?lat={{LATITUDE}}&lon={{LONGITUDE}}&key={{YOUR_API_KEY}}";
+        console.log(queryURL);
 
-                // Performing our AJAX GET request
-                $.ajax({
-                    url: queryURL,
-                    method: "GET",
-                }).then(function (response) {
-                    console.log(response);
-                    var pollution = response.data.current.pollution.aqius;
-                    var coordinate = response.data.location.coordinates;
-                    console.log(pollution);
-                    console.log(coordinate);
-                })
-            };
-        };
+        // Performing our AJAX GET request
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+        }).then(function (response) {
+            console.log(response);
+            var pollution = response.data.current.pollution.aqius;
+            var coordinate = response.data.location.coordinates;
+            console.log(pollution);
+            console.log(coordinate);
+        })
     };
     const locArr = $("#input-location").val().split(",");
-    air(locArr[0],locArr[1].trim());
+    air(locArr[0], locArr[1].trim());
 });
