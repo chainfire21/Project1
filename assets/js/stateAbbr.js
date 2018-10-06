@@ -1,8 +1,8 @@
-var stateName = convertRegion("TX", TO_NAME);
-var stateAbbr = convertRegion("Texas", TO_ABBREVIATED);
-
 const TO_NAME = 1;
 const TO_ABBREVIATED = 2;
+
+var stateName = convertRegion("TX", TO_NAME);
+var stateAbbr = convertRegion("Texas", TO_ABBREVIATED);
 
 function convertRegion(input, to) {
     var states = [
