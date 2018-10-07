@@ -226,6 +226,8 @@ $("form").submit(function (e) {
 
 //update the map location to new search location
 function updatePosition(mapType, lat, long) {
+    console.log(lat,long);
+    air(lat, long);
     var location = new google.maps.LatLng(lat, long);
     mapType.setCenter(location);
     mapType.setZoom(10);
@@ -285,26 +287,32 @@ function initMaps() {
 //     const locArr = $("#input-location").val().split(",");
 //     air(locArr[0],locArr[1].trim());
 // });
-$("#location-submit").on("click", function (e) {
+// $("#location-submit").on("click", function (e) {
 
-    function air(lat, long) {
-        e.preventDefault();
 
-        var queryURL = "api.airvisual.com/v2/nearest_city?lat={{LATITUDE}}&lon={{LONGITUDE}}&key={{YOUR_API_KEY}}";
-        console.log(queryURL);
+//         e.preventDefault();
+//     const locArr = $("#input-location").val().split(",");
+//     // air(locArr[0], locArr[1].trim());
+// });
 
-        // Performing our AJAX GET request
-        $.ajax({
-            url: queryURL,
-            method: "GET",
-        }).then(function (response) {
-            console.log(response);
-            var pollution = response.data.current.pollution.aqius;
-            var coordinate = response.data.location.coordinates;
-            console.log(pollution);
-            console.log(coordinate);
-        })
-    };
-    const locArr = $("#input-location").val().split(",");
-    air(locArr[0], locArr[1].trim());
-});
+function air(lat, long) {
+
+    latTruncate = lat.toFixed(4);
+    longTruncate = long.toFixed(4);
+    
+
+    var queryURL = "api.airvisual.com/v2/nearest_station?lat=" + latTruncate + "&lon=" + longTruncate + "&key=a94duGPQHHCF4FGeQ";
+    console.log(queryURL);
+
+    // Performing our AJAX GET request
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+    }).then(function (response) {
+        console.log(response);
+        var pollution = response.data.current.pollution.aqius;
+        var coordinate = response.data.location.coordinates;
+        console.log(pollution);
+        console.log(coordinate);
+    })
+};
