@@ -170,6 +170,7 @@ for (var i = 0; i < cityStates.length; i++) {
             break;
         case "Wyoming":
             tempStr = tempStr + ", WY";
+            break;
     }
     cityStCodes.push(tempStr);
 }
@@ -216,41 +217,20 @@ $("form").submit(function (e) {
         console.log(response);
         if (response.status === "OK") {
             updatePosition(map, response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
+            showAir(response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
         }
         else {
+            $('#error-modal').foundation('open');
             console.log("no results found");
         }
     });
 });
 
+$("#close-modal").on("click", function () { $("#error-modal").foundation("close"); });
+
 //update the map location to new search location
 function updatePosition(mapType, lat, long) {
     var location = new google.maps.LatLng(lat, long);
     mapType.setCenter(location);
-    mapType.setZoom(8);
-}
-//create the main and favorite maps
-function initMaps() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 29.7604267, lng: -95.3698028 },
-        zoom: 8
-    });
-    favMap1 = new google.maps.Map(document.getElementById("favMap1"), {
-        center: { lat: 40.7127753, lng: -74.0059728 },
-        zoom: 8
-    });
-    favMap2 = new google.maps.Map(document.getElementById("favMap2"), {
-        center: { lat: 39.7392358, lng: -104.990251 },
-        zoom: 8
-    });
-    favMap3 = new google.maps.Map(document.getElementById("favMap3"), {
-        center: { lat: 34.0522342, lng: -118.2436849 },
-        zoom: 8
-    });
-    favMap3 = new google.maps.Map(document.getElementById("favMap4"), {
-        center: { lat: 41.8781136, lng: -87.6297982 },
-        zoom: 8
-    });
-
-
+    mapType.setZoom(9);
 }
