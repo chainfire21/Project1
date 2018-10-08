@@ -170,6 +170,7 @@ for (var i = 0; i < cityStates.length; i++) {
             break;
         case "Wyoming":
             tempStr = tempStr + ", WY";
+            break;
     }
     cityStCodes.push(tempStr);
 }
@@ -217,12 +218,16 @@ $("form").submit(function (e) {
         console.log(response);
         if (response.status === "OK") {
             updatePosition(map, response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
+            showAir(response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
         }
         else {
+            $('#error-modal').foundation('open');
             console.log("no results found");
         }
     });
 });
+
+$("#close-modal").on("click", function () { $("#error-modal").foundation("close"); });
 
 //update the map location to new search location
 function updatePosition(mapType, lat, long) {
@@ -254,46 +259,7 @@ function initMaps() {
         center: { lat: 41.8781136, lng: -87.6297982 },
         zoom: 8
     });
-
-
 }
-
-// incorporating AirVisual's endpoints
-// $("#location-submit").on("click", function (e) {
-
-//     function air(city, state) {
-//         e.preventDefault();
-//         for (i = 0; i < statesAbbr.length; i++) {
-//             if (state === statesAbbr[i][1]) {
-//                 state = statesAbbr[i][0];
-
-//                 var queryURL = "api.airvisual.com/v2/nearest_city?lat={{LATITUDE}}&lon={{LONGITUDE}}&key={{YOUR_API_KEY}}";
-//                 console.log(queryURL);
-
-//                 // Performing our AJAX GET request
-//                 $.ajax({
-//                     url: queryURL,
-//                     method: "GET",
-//                 }).then(function (response) {
-//                     console.log(response);
-//                     var pollution = response.data.current.pollution.aqius;
-//                     var coordinate = response.data.location.coordinates;
-//                     console.log(pollution);
-//                     console.log(coordinate);
-//                 })
-//             };
-//         };
-//     };
-//     const locArr = $("#input-location").val().split(",");
-//     air(locArr[0],locArr[1].trim());
-// });
-// $("#location-submit").on("click", function (e) {
-
-
-//         e.preventDefault();
-//     const locArr = $("#input-location").val().split(",");
-//     // air(locArr[0], locArr[1].trim());
-// });
 
 function air(lat, long) {
 
@@ -316,3 +282,5 @@ function air(lat, long) {
         console.log(coordinate);
     })
 };
+    mapType.setZoom(9);
+

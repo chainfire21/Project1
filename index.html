@@ -42,6 +42,13 @@
                 <div class="cell" id="map"></div>
             </div>
         </div>
+
+        <div class="reveal text-center" id="error-modal" data-reveal>
+            <p class="lead">Im sorry, we could not find that city.</p>
+            <button id="close-modal" class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <div class="grid-x grid-margin-x grid-margin-y">
             <div class="cell" id="searches">
                 <h2>Recent Searches</h2>
@@ -112,6 +119,10 @@
     <!-- Compressed Foundation JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.3/dist/js/foundation.min.js" integrity="sha256-l1HhyJ0nfWQPdwsVJLNq8HfZNb3i1R9M82YrqVPzoJ4= sha384-NH8utV74bU+noXiJDlEMZuBe34Bw/X66sw22frHkgIs8R1QKWc8ckxYB4DheLjH4 sha512-JMs3Y+JjY+DhwVOPeJhkLM/0FeK9ANxvuYiHGpGp7Q2kMlmNEN/2v6TkrXdirxqB3DHxPlQ8iMxvb/eSPCF5CA=="
         crossorigin="anonymous"></script>
+    <!-- Function for generating air pollution triangles -->
+    <script src="./assets/js/showAir.js"></script>
+    <!-- Generate Google Maps maps -->
+    <script src="./assets/js/initMap.js"></script>
     <!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1cMSk9b4rKrqw74cT7mgOoV0OyY_VEHc&callback=initMaps"
         async defer></script>
