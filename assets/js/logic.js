@@ -207,7 +207,6 @@ $('#city-state .typeahead').typeahead({
 $("form").submit(function (e) {
     e.preventDefault();
     const locArr = $("#input-location").val().split(",");
-    console.log(locArr);
     const queryURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${locArr[0]},${locArr[1].trim()}tx&key=AIzaSyA5MpvY77M88RbRZ2JsaPYR5lEjsX_HyXg`;
     $.ajax({
         url: queryURL,
@@ -231,36 +230,11 @@ $("#close-modal").on("click", function () { $("#error-modal").foundation("close"
 
 //update the map location to new search location
 function updatePosition(mapType, lat, long) {
-    console.log(lat,long);
     air(lat, long);
     var location = new google.maps.LatLng(lat, long);
     mapType.setCenter(location);
-    mapType.setZoom(10);
+    mapType.setZoom(9);
 }
-//create the main and favorite maps
-function initMaps() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 29.7604267, lng: -95.3698028 },
-        zoom: 10
-    });
-    favMap1 = new google.maps.Map(document.getElementById("favMap1"), {
-        center: { lat: 40.7127753, lng: -74.0059728 },
-        zoom: 10
-    });
-    favMap2 = new google.maps.Map(document.getElementById("favMap2"), {
-        center: { lat: 39.7392358, lng: -104.990251 },
-        zoom: 8
-    });
-    favMap3 = new google.maps.Map(document.getElementById("favMap3"), {
-        center: { lat: 34.0522342, lng: -118.2436849 },
-        zoom: 8
-    });
-    favMap3 = new google.maps.Map(document.getElementById("favMap4"), {
-        center: { lat: 41.8781136, lng: -87.6297982 },
-        zoom: 8
-    });
-}
-
 function air(lat, long) {
 
     latTruncate = lat.toFixed(4);
@@ -282,5 +256,4 @@ function air(lat, long) {
         console.log(coordinate);
     })
 };
-    mapType.setZoom(9);
 
