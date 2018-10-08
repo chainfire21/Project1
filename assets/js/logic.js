@@ -230,30 +230,36 @@ $("#close-modal").on("click", function () { $("#error-modal").foundation("close"
 
 //update the map location to new search location
 function updatePosition(mapType, lat, long) {
-    air(lat, long);
     var location = new google.maps.LatLng(lat, long);
     mapType.setCenter(location);
     mapType.setZoom(9);
 }
-function air(lat, long) {
 
-    latTruncate = lat.toFixed(4);
-    longTruncate = long.toFixed(4);
-    
-
-    var queryURL = "api.airvisual.com/v2/nearest_station?lat=" + latTruncate + "&lon=" + longTruncate + "&key=a94duGPQHHCF4FGeQ";
-    console.log(queryURL);
-
-    // Performing our AJAX GET request
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-    }).then(function (response) {
-        console.log(response);
-        var pollution = response.data.current.pollution.aqius;
-        var coordinate = response.data.location.coordinates;
-        console.log(pollution);
-        console.log(coordinate);
-    })
-};
-
+$("#location-submit").on("click", function (e) {
+    function air(city, state) {
+        e.preventDefault();
+        // const locArr = $("#input-location").val().split(",");
+        // var city = locArr[0];
+        // var state = locArr[1].trim();
+        for (i = 0; i < statesAbbr.length; i++) {
+            if (state === statesAbbr[i][1]) {
+                state = statesAbbr[i][0];
+                var queryURL = "http://api.airvisual.com/v2/city?city=" + city + "&state=" + state + "&country=USA&key=a94duGPQHHCF4FGeQ";
+                console.log(queryURL);
+                // Performing our AJAX GET request
+                $.ajax({
+                    url: queryURL,
+                    method: "GET",
+                }).then(function (response) {
+                    console.log(response);
+                    var pollution = response.data.current.pollution.aqius;
+                    var coordinate = response.data.location.coordinates;
+                    console.log(pollution);
+                    console.log(coordinate);
+                })
+            };
+        };
+    };
+    const locArr = $("#input-location").val().split(",");
+    air(locArr[0], locArr[1].trim());
+});
