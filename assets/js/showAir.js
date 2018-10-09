@@ -4,7 +4,6 @@ function showAir(mapType, lat, long) {
     const secondAreaLat = 0.52;
     const secondAreaLong = 0.6;
     const between = Math.sqrt(Math.pow(0.56,2)/2);
-    // console.log(b)
     const points = [[lat, long], [lat + firstAreaLat, long], [lat, long + firstAreaLong], [lat - firstAreaLat, long], [lat, long - firstAreaLong],
     [lat + secondAreaLat, long], [lat + between, long + between], [lat, long + secondAreaLong], [lat - between, long + between],
     [lat - secondAreaLat, long], [lat - between, long - between], [lat, long - secondAreaLong], [lat + between, long - between]];

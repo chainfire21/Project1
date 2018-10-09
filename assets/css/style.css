@@ -2,17 +2,16 @@
     margin-right: 5px;   
 }
 
-/* .page-border{
-    border: 5px solid whitesmoke;
-    border-radius: 5px;
-} */
-
 #map-area{
     height: 500px;
 }
 
 #map{
     height:100%;
+}
+
+#historical-data{
+    width:100%;
 }
 
 #favMap1, #favMap2, #favMap3, #favMap4{
