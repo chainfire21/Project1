@@ -204,7 +204,16 @@ $('#city-state .typeahead').typeahead({
     });
 // ------------------------------------------------TYPEAHEAD END--------------------------------------------------//
 
-$("form").submit(function (e) {
+
+
+$("#fav-button").on("click", function(){
+    var fav = $("#input-location").val();
+    firebase.database().ref('users/' + firebase.auth().currentUser.userId).push({
+        favorite: fav  
+    });
+});
+
+$("#search-form").submit(function (e) {
     e.preventDefault();
     const locArr = $("#input-location").val().split(",");
     const queryURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${locArr[0]},${locArr[1].trim()}tx&key=AIzaSyA5MpvY77M88RbRZ2JsaPYR5lEjsX_HyXg`;
