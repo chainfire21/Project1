@@ -226,7 +226,7 @@ $("#search-form").submit(function (e) {
         console.log(response);
         if (response.status === "OK") {
             updatePosition(map, response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
-            showAir(response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
+            showAir(map,response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
         }
         else {
             $('#error-modal').foundation('open');

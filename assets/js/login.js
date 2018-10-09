@@ -45,7 +45,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     if (user) {
         $("#fav-button").show();
-
         $("#sign-up-btn").hide();
         $("#sign-in-btn").hide();
         $("#loggedin").text("signed in as " + user.email);

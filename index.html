@@ -24,10 +24,11 @@
     <div class="grid-container">
         <div class="reveal" id="sign-up" data-reveal>
             <form id="signup-form">
-                <input type="text" placeholder="Email" id="signupEmail" >
-            
-                <input type="text" placeholder="Password" id="signupPassword" >
-                <button type="submit" data-close="sign-up">create</button>
+                <input type="text" placeholder="Email" id="signupEmail">
+                <br>
+                <input type="text" placeholder="Password" id="signupPassword">
+                <br>
+                <button class="button" type="submit" data-close="sign-up">create</button>
             </form>
             <button class="close-button" data-close aria-label="Close modal" type="button">
                 <span aria-hidden="true">&times;</span>
@@ -35,10 +36,11 @@
         </div>
         <div class="reveal" id="sign-in" data-reveal>
             <form id="login-form">
-                <input type="text" placeholder="Email" id="loginEmail" >
-
-                <input type="text" placeholder="Password" id="loginPassword" >
-                <button type="submit" data-close="sign-in">login</button>
+                <input type="text" placeholder="Email" id="loginEmail">
+                <br>
+                <input type="text" placeholder="Password" id="loginPassword">
+                <br>
+                <button class="button" type="submit" data-close="sign-in">login</button>
             </form>
             <button class="close-button" data-close aria-label="Close modal" type="button">
                 <span aria-hidden="true">&times;</span>
@@ -67,7 +69,7 @@
                 <header class="cell small-4">
                     <h1 class="text-center cell">Eco Status</h1>
                 </header>
-                <div class="cell small-4 text-right" >
+                <div class="cell small-4 text-right">
                     <div id="loggedin"></div>
                     <button class="button success" data-open="sign-up" id="sign-up-btn">Sign Up</button>
                     <button class="button success" data-open="sign-in" id="sign-in-btn">Sign In</button>
@@ -148,7 +150,6 @@
         crossorigin="anonymous"></script>
     <!-- users -->
     <script src="./assets/js/login.js"></script>
-
     <!-- Function for generating air pollution triangles -->
     <script src="./assets/js/showAir.js"></script>
     <!-- Generate Google Maps maps -->

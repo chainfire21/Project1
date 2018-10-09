@@ -6,6 +6,15 @@
     height: 500px;
 }
 
+.margin-top{
+    margin-top: 10px;
+}
+
+.close-button, .close-button.medium {
+    right: 0rem;
+    top: -0.5rem;
+}
+
 #map{
     height:100%;
 }
