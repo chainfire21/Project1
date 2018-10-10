@@ -1,21 +1,12 @@
-<<<<<<< HEAD
 var points;
-function showAir(lat, long) {
-const firstAreaLat = 0.26;
-=======
 function showAir(mapType, lat, long) {
     const firstAreaLat = 0.26;
->>>>>>> 58c89eb4b4ea3d34f6aa2dbd3f2b0fc0d1f01db9
     const firstAreaLong = 0.3;
     const secondAreaLat = 0.52;
     const secondAreaLong = 0.6;
     const between = Math.sqrt(Math.pow(0.56,2)/2);
-<<<<<<< HEAD
     // console.log(b)
     points = [[lat, long], [lat + firstAreaLat, long], [lat, long + firstAreaLong], [lat - firstAreaLat, long], [lat, long - firstAreaLong],
-=======
-    const points = [[lat, long], [lat + firstAreaLat, long], [lat, long + firstAreaLong], [lat - firstAreaLat, long], [lat, long - firstAreaLong],
->>>>>>> 58c89eb4b4ea3d34f6aa2dbd3f2b0fc0d1f01db9
     [lat + secondAreaLat, long], [lat + between, long + between], [lat, long + secondAreaLong], [lat - between, long + between],
     [lat - secondAreaLat, long], [lat - between, long - between], [lat, long - secondAreaLong], [lat + between, long - between]];
 

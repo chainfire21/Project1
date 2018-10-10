@@ -225,8 +225,8 @@ $("#search-form").submit(function (e) {
     }).then(function (response) {
         console.log(response);
         if (response.status === "OK") {
-            showAir(response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
             updatePosition(map, response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
+            showAir(map,response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
         }
         else {
             $('#error-modal').foundation('open');

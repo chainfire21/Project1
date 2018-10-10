@@ -1,30 +1,14 @@
-const dataset = [
-    [48, 240],
-    [40, 111],
-    [30, 158],
-    [24, 100],
-    [23, 90],
-    [22, 94],
-    [21, 88],
-    [20, 67],
-    [19, 50],
-    [18, 60],
-    [17, 77],
-    [16, 88],
-    [15, 200],
-    [14, 190],
-    [13, 90],
-    [10, 50],
-    [5, 12],
-    [1, 280]
-];
+const dataset = [];
+for (let i = 0; i < 49; i++) {
+    dataset.push([i, Math.floor(Math.random() * 300)+5]);
+}
 console.log(d3);
 const padding = 40;
 const h = 350;
 const w = 1200;
 const xScale = d3.scaleLinear()
     .domain([0, d3.max(dataset, function (d) { return d[0]; }) + 2])
-    .range([w-padding, padding]);
+    .range([w - padding, padding]);
 const yScale = d3.scaleLinear()
     .domain([0, d3.max(dataset, function (d) { return d[1]; }) + padding / 2])
     .range([h - padding, padding]);
@@ -59,7 +43,7 @@ svg.append("g")
 svg.append("text")
     .attr("transform",
         "translate(" + (w / 2) + " ," +
-        (h) + ")")
+        (h - 5) + ")")
     .style("text-anchor", "middle")
     .text("Hours Ago");
 svg.append("g")
@@ -69,7 +53,7 @@ svg.append("g")
 // text label for the y axis
 svg.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 -5)
+    .attr("y", 0 - 5)
     .attr("x", 0 - (h / 2))
     .attr("dy", "1em")
     .style("text-anchor", "middle")
