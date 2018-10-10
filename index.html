@@ -63,14 +63,16 @@
                             <button id="location-submit" type="submit" class="success button">Go</button>
                         </form>
                     </div>
-                    
+
                     <button id="fav-button" type="button" class="success button">Add Favorite</button>
                     <button id="remove-button" type="button" class="success button">Remove</button>
 
                     <!-- dropdown -->
-                    <select id="fav-select" onchange="selectFav()">
-                        <option disabled selected>Favorites</option>
-                    </select>
+                    <div class="hide">
+                        <select id="fav-select" onchange="selectFav()">
+                            <option disabled selected>Favorites</option>
+                        </select>
+                    </div>
 
                 </div>
                 <header class="cell small-4">
