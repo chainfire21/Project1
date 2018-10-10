@@ -246,7 +246,7 @@ function air(lat, long) {
         var lat = points[x][0];
         var long = points[x][1];
 
-        var queryURL = "http://api.airvisual.com/v2/nearest_station?lat=" + lat + "&lon=" + long + "&key=a94duGPQHHCF4FGeQ";
+        var queryURL = "https://api.airvisual.com/v2/nearest_station?lat=" + lat + "&lon=" + long + "&key=a94duGPQHHCF4FGeQ";
         console.log(queryURL);
         // Performing our AJAX GET request
         $.ajax({
