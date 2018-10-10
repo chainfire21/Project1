@@ -6,6 +6,15 @@
     height: 500px;
 }
 
+.margin-top{
+    margin-top: 10px;
+}
+
+.close-button, .close-button.medium {
+    right: 0rem;
+    top: -0.5rem;
+}
+
 #map{
     height:100%;
 }
@@ -48,7 +57,7 @@ h2{
 }
 
 body{
-    background-image: url(../media/cloudySky.jpg);
+    background-image: url(./cloudySky-v4.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
