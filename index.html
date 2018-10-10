@@ -61,10 +61,19 @@
                             <input class="typeahead drop-shadow" id="input-location" type="text" title="City Name, 2-Digit State or Country"
                                 pattern="^[A-Za-z ]+(?:,?\s+)[A-Za-z]{2,}$" placeholder="City Name, State">
                             <button id="location-submit" type="submit" class="success button">Go</button>
-                            <button id="fav-button" type="button" class="success button">Add Favorite</button>
-
                         </form>
                     </div>
+
+                    <button id="fav-button" type="button" class="success button">Add Favorite</button>
+                    <button id="remove-button" type="button" class="success button">Remove</button>
+
+                    <!-- dropdown -->
+                    <div class="hide">
+                        <select id="fav-select" onchange="selectFav()">
+                            <option disabled selected>Favorites</option>
+                        </select>
+                    </div>
+
                 </div>
                 <header class="cell small-4">
                     <h1 class="text-center cell">Eco Status</h1>
