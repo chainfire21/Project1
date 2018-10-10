@@ -61,10 +61,19 @@
                             <input class="typeahead drop-shadow" id="input-location" type="text" title="City Name, 2-Digit State or Country"
                                 pattern="^[A-Za-z ]+(?:,?\s+)[A-Za-z]{2,}$" placeholder="City Name, State">
                             <button id="location-submit" type="submit" class="success button">Go</button>
-                            <button id="fav-button" type="button" class="success button">Add Favorite</button>
-
                         </form>
                     </div>
+
+                    <button id="fav-button" type="button" class="success button">Add Favorite</button>
+                    <button id="remove-button" type="button" class="success button">Remove</button>
+
+                    <!-- dropdown -->
+                    <div class="hide">
+                        <select id="fav-select" onchange="selectFav()">
+                            <option disabled selected>Favorites</option>
+                        </select>
+                    </div>
+
                 </div>
                 <header class="cell small-4">
                     <h1 class="text-center cell">Eco Status</h1>
@@ -97,7 +106,7 @@
             <div class="cell auto">
                 <div class="card drop-shadow">
                     <div class="card-divider">
-                        This is a header
+                        Air Pollution: 120 AQI
                     </div>
                     <div id="favMap1"></div>
                 </div>
@@ -105,7 +114,7 @@
             <div class="cell auto">
                 <div class="card drop-shadow">
                     <div class="card-divider">
-                        This is a header
+                        Air Pollution: 200 AQI
                     </div>
                     <div id="favMap2"></div>
                 </div>
@@ -114,7 +123,7 @@
             <div class="cell auto">
                 <div class="card drop-shadow">
                     <div class="card-divider">
-                        This is a header
+                        Air Pollution: 100 AQI
                     </div>
                     <div id="favMap3"></div>
                 </div>
@@ -122,7 +131,7 @@
             <div class="cell auto">
                 <div class="card drop-shadow">
                     <div class="card-divider">
-                        This is a header
+                        Air Pollution: 223 AQI
                     </div>
                     <div id="favMap4"></div>
                 </div>

@@ -206,13 +206,6 @@ $('#city-state .typeahead').typeahead({
 
 
 
-$("#fav-button").on("click", function(){
-    var fav = $("#input-location").val();
-    firebase.database().ref('users/' + firebase.auth().currentUser.userId).push({
-        favorite: fav  
-    });
-});
-
 $("#search-form").submit(function (e) {
     e.preventDefault();
     const locArr = $("#input-location").val().split(",");
