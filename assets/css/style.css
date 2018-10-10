@@ -6,8 +6,21 @@
     height: 500px;
 }
 
+.margin-top{
+    margin-top: 10px;
+}
+
+.close-button, .close-button.medium {
+    right: 0rem;
+    top: -0.5rem;
+}
+
 #map{
     height:100%;
+}
+
+#historical-data{
+    width:100%;
 }
 
 #favMap1, #favMap2, #favMap3, #favMap4{
@@ -25,15 +38,22 @@
 .button{
     margin: 0px;
     border-radius: 10px;
+    box-shadow: 3px 3px 7px 2px #0a0a0a4f;
+}
+
+.drop-shadow{
+    box-shadow: 3px 3px 7px 2px #0a0a0a4f;
 }
 
 h1{
-    font-family: 'Rancho','Josefin Slab',sans-serif;
-    color: whitesmoke;
+    text-shadow: 2px 2px 7px #0a0a0a7a;
+    font-family: 'Changa','Josefin Slab',sans-serif;
+    color: white;
 }
 h2{
+    text-shadow: 2px 2px 7px #0a0a0a7a;
     font-family: 'Changa',sans-serif;
-    color: seagreen;
+    color: white;
 }
 
 body{
@@ -42,7 +62,6 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     font-family: 'Changa',sans-serif;
-
 }
 
 .tt-menu {

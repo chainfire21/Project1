@@ -170,6 +170,7 @@ for (var i = 0; i < cityStates.length; i++) {
             break;
         case "Wyoming":
             tempStr = tempStr + ", WY";
+            break;
     }
     cityStCodes.push(tempStr);
 }
@@ -203,7 +204,16 @@ $('#city-state .typeahead').typeahead({
     });
 // ------------------------------------------------TYPEAHEAD END--------------------------------------------------//
 
-$("form").submit(function (e) {
+
+
+$("#fav-button").on("click", function(){
+    var fav = $("#input-location").val();
+    firebase.database().ref('users/' + firebase.auth().currentUser.userId).push({
+        favorite: fav  
+    });
+});
+
+$("#search-form").submit(function (e) {
     e.preventDefault();
     const locArr = $("#input-location").val().split(",");
     const queryURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${locArr[0]},${locArr[1].trim()}tx&key=AIzaSyA5MpvY77M88RbRZ2JsaPYR5lEjsX_HyXg`;
@@ -215,42 +225,51 @@ $("form").submit(function (e) {
     }).then(function (response) {
         console.log(response);
         if (response.status === "OK") {
+            showAir(map, response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
             updatePosition(map, response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
         }
         else {
+            $('#error-modal').foundation('open');
             console.log("no results found");
         }
     });
 });
 
+$("#close-modal").on("click", function () { $("#error-modal").foundation("close"); });
+
 //update the map location to new search location
 function updatePosition(mapType, lat, long) {
     var location = new google.maps.LatLng(lat, long);
+    air(lat, long);
     mapType.setCenter(location);
-    mapType.setZoom(8);
-}
-//create the main and favorite maps
-function initMaps() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 29.7604267, lng: -95.3698028 },
-        zoom: 8
-    });
-    favMap1 = new google.maps.Map(document.getElementById("favMap1"), {
-        center: { lat: 40.7127753, lng: -74.0059728 },
-        zoom: 8
-    });
-    favMap2 = new google.maps.Map(document.getElementById("favMap2"), {
-        center: { lat: 39.7392358, lng: -104.990251 },
-        zoom: 8
-    });
-    favMap3 = new google.maps.Map(document.getElementById("favMap3"), {
-        center: { lat: 34.0522342, lng: -118.2436849 },
-        zoom: 8
-    });
-    favMap3 = new google.maps.Map(document.getElementById("favMap4"), {
-        center: { lat: 41.8781136, lng: -87.6297982 },
-        zoom: 8
-    });
+    mapType.setZoom(9);
+};
+
+var surroundAreas = [];
+function air(lat, long) {
+    for (x = 0; x < points.length; x++) {
+        surroundAreas =[];
+
+        var lat = points[x][0];
+        var long = points[x][1];
+
+        var queryURL = "http://api.airvisual.com/v2/nearest_station?lat=" + lat + "&lon=" + long + "&key=a94duGPQHHCF4FGeQ";
+        console.log(queryURL);
+        // Performing our AJAX GET request
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+        }).then(function (response) {
+            // console.log(response);
+            var pollution = response.data.current.pollution.aqius;
+            var coordinate = response.data.location.coordinates;
+            console.log(response);
+            console.log(coordinate);
+            surroundAreas.push(pollution);
+            console.log(surroundAreas);
+        })
+    }
+};
 
 
-}
+
