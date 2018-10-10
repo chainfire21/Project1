@@ -225,8 +225,8 @@ $("#search-form").submit(function (e) {
     }).then(function (response) {
         console.log(response);
         if (response.status === "OK") {
+            showAir(map, response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
             updatePosition(map, response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
-            showAir(map,response.results[0].geometry.location.lat, response.results[0].geometry.location.lng);
         }
         else {
             $('#error-modal').foundation('open');
@@ -248,6 +248,7 @@ function updatePosition(mapType, lat, long) {
 var surroundAreas = [];
 function air(lat, long) {
     for (x = 0; x < points.length; x++) {
+        surroundAreas =[];
 
         var lat = points[x][0];
         var long = points[x][1];
