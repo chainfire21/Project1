@@ -260,6 +260,7 @@ function air(lat, long) {
             console.log(coordinate);
             surroundAreas.push(pollution);
             console.log(surroundAreas);
+            $('#pollu').text(surroundAreas);
         })
     }
 };
